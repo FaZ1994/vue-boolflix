@@ -3,7 +3,7 @@
     <section class="row align-items-center">
       <div class="col-6 g-0">
         <span class="logo"
-          >boolFlix</span>
+          >boolFlix <sup><i class="fa-solid fa-trademark"></i></sup></span>
       </div>
       <search-bar @performSearch="search" />
     </section>
@@ -79,4 +79,14 @@ export default {
 
 <style lang="scss">
 @import '../styles/general.scss'; 
+
+  .logo {
+    font-size: 3em;
+    color: red;
+
+    i {
+      font-size: .5em;
+    }
+  }
+
 </style>

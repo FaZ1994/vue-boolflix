@@ -24,6 +24,13 @@ export default {
 </script>
 
 <style lang="scss">
-  @import './styles/general.scss' 
-  
+  @import './styles/general.scss' ;
+
+  header{
+    background-color: black;
+  }
+
+  main {
+    background-color: $bg-color;
+  }
 </style>
