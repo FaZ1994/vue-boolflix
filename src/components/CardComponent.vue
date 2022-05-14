@@ -1,11 +1,11 @@
 <template>
-  <div class="card-container align-item-center">
+  <div class="card-container border border-light align-item-center">
     <img
       class="img-fluid h-100 w-100"
-      :src="imgSRC + item.poster_path"
+      :src="imgLogic"
       alt="poster not found"
     />
-    <div class="text-box d-flex flex-column">
+    <div class="text-box">
       <span>Titolo: {{ item.title ? item.title : item.name }}</span>
       <span
         >Titolo originale:
@@ -31,16 +31,6 @@
       <span>Overview: {{ item.overview }} </span>
     </div>
   </div>
-  <!--  
-          titolo originale: {{item.original_title ? item.original_title : item.original_name}}<br />
-          titolo: {{item.title ? item.title : item.name}}<br />
-          lingua: <country-flag :country='language' size='small'/><br />
-          voto: <span v-for="(n,index) in 5" :key="index">
-              <i :class="n <= ratingMath ? 'fa-solid fa-star' : 'fa-regular fa-star'"></i>
-          </span>
-          
-           <i v-for="index in ratingMath(item.vote_average)" :key="index" class="fa-solid fa-star"></i>
-          <span v-if="item.vote_average === 0"><i class="fa-regular fa-star"></i></span> -->
 </template>
 
 <script>
@@ -72,7 +62,16 @@ export default {
     ratingMath() {
       return Math.ceil(this.item.vote_average / 2);
     },
+
+    imgLogic(){
+          let imgSRC = "https://image.tmdb.org/t/p/w342/";
+            if((imgSRC + this.item.poster_path) === (imgSRC + null)){
+                return 'https://critics.io/img/movies/poster-placeholder.png'
+            }else{
+                return imgSRC + this.item.poster_path 
+            }
   },
+  }
 };
 </script>
 
@@ -83,20 +82,28 @@ export default {
   color: rgb(226, 204, 1);
 }
 
+
 .card-container {
-  height: 100%;
-  width: auto;
+  min-width: 200px;
+  height: 260px;
+  margin: 2em;
   position: relative;
-  margin-bottom: 3em;
+  overflow-y: auto;
+  position: relative;
 
   .text-box {
+    width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    display: none;
+    display: none !important;
+    padding: .5em;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.5);
+  }
+  &:hover .text-box {
+    display: block !important;
   }
 }
 </style>

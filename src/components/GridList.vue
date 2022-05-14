@@ -1,14 +1,14 @@
 <template>
-  <section class="container">
-    <div class="row">
+  <section class="grid-container">
+    
       <div
-        class="col-sm-6 col-md-3 col-xl-2"
+        class="grid-card"
         v-for="(movie, index) in searchAll"
         :key="index"
       >
         <card-component :item="movie" />
       </div>
-    </div>
+    
   </section>
 </template>
 
@@ -29,4 +29,9 @@ export default {
 
 <style lang="scss">
 @import '../styles/general.scss'; 
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+}
 </style>
