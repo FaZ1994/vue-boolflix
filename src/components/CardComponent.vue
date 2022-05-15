@@ -42,11 +42,7 @@ export default {
     CountryFlag,
   },
   props: ["item"],
-  data() {
-    return {
-      imgSRC: "https://image.tmdb.org/t/p/w342/",
-    };
-  },
+  
 
   computed: {
     language() {
