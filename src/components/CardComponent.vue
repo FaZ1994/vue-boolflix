@@ -6,19 +6,19 @@
       alt="poster not found"
     />
     <div class="text-box">
-      <span>Titolo: {{ item.title ? item.title : item.name }}</span>
-      <span
+      <div>Titolo: {{ item.title ? item.title : item.name }}</div>
+      <div
         >Titolo originale:
         {{
           item.original_title ? item.original_title : item.original_name
-        }}</span
+        }}</div
       >
-      <span
+      <div
         >Paese di produzione: <country-flag :country="language" size="small" />
-      </span>
-      <span
+      </div>
+      <div class="d-flex"
         >Voto:
-        <span v-for="(n, index) in 5" :key="index">
+        <div v-for="(n, index) in 5" :key="index">
           <i
             :class="
               n <= ratingMath
@@ -26,9 +26,9 @@
                 : 'fa-regular fa-star gold'
             "
           ></i>
-        </span>
-      </span>
-      <span>Overview: {{ item.overview }} </span>
+        </div>
+      </div>
+      <div>Overview: {{ item.overview }} </div>
     </div>
   </div>
 </template>
@@ -65,8 +65,8 @@ export default {
 
     imgLogic(){
           let imgSRC = "https://image.tmdb.org/t/p/w342/";
-            if((imgSRC + this.item.poster_path) === (imgSRC + null)){
-                return 'https://critics.io/img/movies/poster-placeholder.png'
+            if( this.item.poster_path ===    null) {
+                return 'https://i.imgur.com/7G4wNE1.jpg'
             }else{
                 return imgSRC + this.item.poster_path 
             }
@@ -85,7 +85,7 @@ export default {
 
 .card-container {
   min-width: 200px;
-  height: 260px;
+  height: 350px;
   margin: 2em;
   position: relative;
   overflow-y: auto;
